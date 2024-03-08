@@ -28,3 +28,17 @@ pokemonList[2] = {
     height: 3,
     types: ['water', 'poison'],
 };
+
+// For loop to list Pokemon from array into index.html
+for (let i = 0; i < pokemonList.length; i++) {
+    if (pokemonList[i].height > 3) {
+        document.write('<p>' + pokemonList[i].name + ' (Height: ');
+        document.write(pokemonList[i].height + ')');
+        document.write(' - Wow, that\'s big!' + '</p>')
+    }
+    else {
+        document.write('<p>' + pokemonList[i].name + ' (Height: ');
+        document.write(pokemonList[i].height + ')' + '</p>');
+    }
+    
+}
