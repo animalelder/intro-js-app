@@ -29,16 +29,36 @@ pokemonList[2] = {
     types: ['water', 'poison'],
 };
 
+// PREVIOUS CODE
+
 // For loop to list Pokemon from array into index.html
-for (let i = 0; i < pokemonList.length; i++) {
-    if (pokemonList[i].height > 3) {
-        document.write('<p>' + pokemonList[i].name + ' (Height: ');
-        document.write(pokemonList[i].height + ')');
+// for (let i = 0; i < pokemonList.length; i++) {
+//     if (pokemonList[i].height > 3) {
+//         document.write('<p>' + pokemonList[i].name + ' (Height: ');
+//         document.write(pokemonList[i].height + ')');
+//         document.write(' - Wow, that\'s big!' + '</p>')
+//     }
+//     else {
+//         document.write('<p>' + pokemonList[i].name + ' (Height: ');
+//         document.write(pokemonList[i].height + ')' + '</p>');
+//     }
+// }
+
+// NEW CODE
+// Refactor previous code to use forEach() rather than for loop
+
+// First create the function passed to forEach()
+function pokeLoopFunction(pokemon) {
+    if (pokemon.height > 3) {
+        document.write('<p>' + pokemon.name + ' (Height: ');
+        document.write(pokemon.height + ')');
         document.write(' - Wow, that\'s big!' + '</p>')
     }
     else {
-        document.write('<p>' + pokemonList[i].name + ' (Height: ');
-        document.write(pokemonList[i].height + ')' + '</p>');
+        document.write('<p>' + pokemon.name + ' (Height: ');
+        document.write(pokemon.height + ')' + '</p>');
     }
-    
 }
+
+// Call pokeLoopFunction for each Pokemon
+pokemonList.forEach(pokeLoopFunction);
