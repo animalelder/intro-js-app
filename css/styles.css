@@ -1,0 +1,65 @@
+/* I have put a lot of very arbitrary style rules in here.
+I dont plan to keep them.
+But it's fun to play around a bit! */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    background-color: #cdbebe;
+}
+
+h1 {
+    /* text-justify: auto; */
+    font-size: 3vw;
+}
+
+/* Another placeholder section to inject some style before content */
+.pokemon-list {
+    list-style-type: none;
+    text-align: center;
+}
+
+/* Placeholder until we have more content */
+.pokemon-item {
+    background-color: #fff;
+    margin: 2px;
+}
+
+/* This is just for fun right now, especially playing with 'em' units */
+button {
+    min-width: 90%;
+    height: 50px;
+    font-size: 2em;
+    border: none;
+}
+
+@media all and (max-width: 500px) {
+    body {
+        background-color: lightgrey;
+    }
+    button {
+        height: 30px;
+        font-size: 12px;
+    }
+}
+  
+@media screen and (min-width: 500px) and (max-width: 750px) {
+   body {
+        background-color: #c0c0c0;
+   }
+    button {
+        font-size: 20px;
+    }
+}
+  @media screen and (max-width: 750px) {
+    body {
+        background-color: #7e7e7e;
+    }
+    pokemon-item {
+        background-color: lightslategray;
+    }
+  }
