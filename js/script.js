@@ -104,14 +104,15 @@ pokemonRepository.loadList().then(function() {
   });
 
 function showLoadingMessage(){
-    document.getElementById('loadingMessage').style.display = 'block';
+    document.getElementById('loadingMessage').style.display = 'flex';
     console.log('Loading.');
 }
 
 function hideLoadingMessage(){
+  setTimeout(function() {
     document.getElementById('loadingMessage').style.display = 'none';
-    console.log('Finished Loading.')
-}
+    console.log('Finished Loading.');
+}, 1000)};
 
 // OLD CODE  
 // forEach function to call addListItem to create elements for each Pokemon

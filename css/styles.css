@@ -15,17 +15,21 @@ body {
 h1 {
     /* text-justify: auto; */
     font-size: 3vw;
+    text-align: center;
 }
 
 #loadingMessage {
     display: none;
+    position: fixed;
+    justify-content: center;
+    margin: auto;
     font-size: 3vw;
+    text-align: center;
     min-width: 25vw;
-    min-height: 25vw;
-    background-color: yellow;
+    min-height: 10vw;
+    background-color: rgb(180, 20, 20);
     color: whitesmoke;
-    border-radius: 1vw;
-    transition: opacity 0.5s ease-in-out;
+    border-radius: 3vw;
 
 }
 
