@@ -39,22 +39,28 @@ let pokemonRepository = (function(){
              let $row = $('.row');
 
              // Create a div for one Pokemon shown as a card with a small image, title, and button to see details
-             let $card = $('<div class="col-4 col-md-3 pb-1 border border-light"></div>');
+             let $card = $('<div class="col-6 col-md-4 col-lg-3 pb-1 shadow-sm "></div>');
              let $image = $('<img class="poke-img mx-auto" alt="sprite image"/>');
              // This is url from the JSON, small enough to look good on a card
              $image.attr("src", pokemon.imageUrlCard);
 
-             let $cardBody = $('<div class="card-body"></div>')
+             let $cardBody = $('<div class="card-body"></div>');
+             let $titleDiv = $('<div class="w-auto"></div>');
+             let $imgDiv = $('<div class="w-auto"></div>');
+             let $detailsDiv = $('<div class="w-auto"></div>');
 
-             let $cardTitle = $('<h4 class="text-center" >' + pokemon.name + '</h4>');
-             let $seeDetails = $('<button type="button" class="btn btn-primary mb-1 align-self-end float-right" data-toggle="modal" data-target="#myModal">More</button>');
+
+             let $cardTitle = $('<h4 class="text-center pt-2" >' + pokemon.name + '</h4>');
+             let $seeDetails = $('<button type="button" id="More" class="btn btn-primary rounded-pill mb-1 align-self-end float-right" data-toggle="modal" data-target="#myModal">More</button>');
              // Now we append the card into the div
              $row.append($card);
              // Now we add the individual info to the card
              $card.append($cardTitle);
              $card.append($cardBody);
-             $cardBody.append($image);
-             $cardBody.append($seeDetails);
+             $cardBody.append($imgDiv);
+             $cardBody.append($detailsDiv);
+             $imgDiv.append($image);
+             $detailsDiv.append($seeDetails);
      
              $seeDetails.on("click", function (event) {
                showDetails(pokemon);
@@ -98,6 +104,8 @@ let pokemonRepository = (function(){
         item.imageUrlCard = details.sprites.front_shiny;
         item.imageUrlModal = details.sprites.other.dream_world.front_default;
         item.height = details.height;
+        // Added weight
+        item.weight = details.weight;
         // Create an array for multiple types
         item.types = [];
         // Loop through the types data to find the name in type
@@ -113,26 +121,28 @@ let pokemonRepository = (function(){
     function openModal(pokemon){
       let modalBody = $('.modal-body');
       let modalTitle = $('.modal-title');
-      let modalHeader = $('.modal-header');
 
       // Clear the content of the title and body of the modal
       modalTitle.empty();
       modalBody.empty();
 
       // element for the name
-      let nameElement = $("<h2>" + pokemon.name + "</h2>");
+      let nameElement = $('<h2 class="font-weight-bold text-uppercase pl-2">' + pokemon.name + '</h2>');
       // image content
-      let imageElementModal = $('<img class="modal-img" style="max-width:25%">');
+      let imageElementModal = $('<img class="modal-img" alt="Image of chosen Pokemon" style="max-width:30vw">');
       imageElementModal.attr("src", pokemon.imageUrlModal);
       // height element
-      let heightElement = $("<p> Height: " + pokemon.height + "</p>");
+      let heightElement = $('<div id="typeSet" class="w-auto pl-3 text-left"> Height: ' + pokemon.height + '</div>');
+      // weight element
+      let weightElement = $('<div id="typeSet" class="w-auto pl-3 text-left"> Weight: ' + pokemon.weight + '</div>');
       // type information
-      let typeElement = $("<p>Type: " + pokemon.types.join(", ") + "</p>"); 
+      let typeElement = $('<div id="typeSet" class="w-auto pl-3 text-left">Type: ' + pokemon.types.join(", ") + '</div>'); 
 
       // Add the elements created with json data
       modalTitle.append(nameElement);
       modalBody.append(imageElementModal);
       modalBody.append(heightElement);
+      modalBody.append(weightElement);
       modalBody.append(typeElement);
     }
 
