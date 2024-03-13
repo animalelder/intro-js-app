@@ -1,15 +1,17 @@
-# Pokemon Pokedata
+# Pokemon Pokedex Pokedata
 
 ## The end result of this project is:
 
-To build a small web application with HTML, CSS, and JavaScript that loads
+To have built a small web application with HTML, CSS, and JavaScript that loads
 data from an external API and enables the viewing of data points in detail.
 
 Users will be able to interact with the website and view details for a selected Pokemon.
 
+Design will be screen size responsive and designed with accessibility in mind
+
 ## How to get the project running
 
-This project has not been uploaded to a server yet, so you can simply look at the code.
+[Check out the live site on Github Pages!](https://animalelder.github.io/intro-js-app)
 
 ## Project Dependencies
 
@@ -18,6 +20,8 @@ This project has not been uploaded to a server yet, so you can simply look at th
 - Tested with Safari and Brave on Mac OS, Safari on iOS
 - Extensions: Live Server, Prettier
 - pokemon API
+- CSS: Bootstrap 4.3.1
+- Javascript: jQuery 3.3.1, Popper JS Library, and Bootstrap JS Library
 - Polyfill for promise function to support older browsers
 - Polyfill for fetch function to support older browsers
 - bootstrap to be added in future commit
