@@ -39,20 +39,20 @@ let pokemonRepository = (function(){
              let $row = $('.row');
 
              // Create a div for one Pokemon shown as a card with a small image, title, and button to see details
-             let $card = $('<div class="col-4 col-md-3 border"></div>');
-             let $image = $('<img class="poke-img" alt="sprite image"/>');
+             let $card = $('<div class="col-4 col-md-3 pb-1 border border-light"></div>');
+             let $image = $('<img class="poke-img mx-auto" alt="sprite image"/>');
              // This is url from the JSON, small enough to look good on a card
              $image.attr("src", pokemon.imageUrlCard);
 
-             let $cardBody = $('<div class="card-body" ></div>')
+             let $cardBody = $('<div class="card-body"></div>')
 
              let $cardTitle = $('<h4 class="text-center" >' + pokemon.name + '</h4>');
-             let $seeDetails = $('<button type="button" class="btn btn-dark " data-toggle="modal" data-target="#myModal">Details</button>');
+             let $seeDetails = $('<button type="button" class="btn btn-primary mb-1 align-self-end float-right" data-toggle="modal" data-target="#myModal">More</button>');
              // Now we append the card into the div
              $row.append($card);
              // Now we add the individual info to the card
+             $card.append($cardTitle);
              $card.append($cardBody);
-             $cardBody.append($cardTitle);
              $cardBody.append($image);
              $cardBody.append($seeDetails);
      
@@ -71,11 +71,9 @@ let pokemonRepository = (function(){
 
     // This will load the list of 150 pokemon via the api
     function loadList() {
-      showLoadingMessage();
       return fetch(apiUrl).then(function (response) {
         return response.json();
       }).then(function (json) {
-          hideLoadingMessage();
         json.results.forEach(function (item) {
           let pokemon = {
             name: item.name,
@@ -84,8 +82,7 @@ let pokemonRepository = (function(){
           add(pokemon);
           console.log(pokemon);
         });
-      }).catch(function (e) {
-        hideLoadingMessage();  
+      }).catch(function (e) {  
         console.error(e);
       })
     }
@@ -123,14 +120,14 @@ let pokemonRepository = (function(){
       modalBody.empty();
 
       // element for the name
-      let nameElement = $("<h5>" + pokemon.name + "</h5>");
+      let nameElement = $("<h2>" + pokemon.name + "</h2>");
       // image content
       let imageElementModal = $('<img class="modal-img" style="max-width:25%">');
       imageElementModal.attr("src", pokemon.imageUrlModal);
       // height element
       let heightElement = $("<p> Height: " + pokemon.height + "</p>");
       // type information
-      let typeElement = $("<p>Type: " + pokemon.types + "</p>"); 
+      let typeElement = $("<p>Type: " + pokemon.types.join(", ") + "</p>"); 
 
       // Add the elements created with json data
       modalTitle.append(nameElement);
@@ -157,19 +154,6 @@ pokemonRepository.loadList().then(function() {
     });
   });
 
-// This was the bonus task to add a loading message
-// It came out looking amateur, but it works
-function showLoadingMessage(){
-    // document.getElementById('loadingMessage').classList.add('is-visible');
-    console.log('Loading.');
-}
 
-// Hide loading message when Loading is finished
-// Right now, setTimeout delays the loading message from disappearing so quickly
-function hideLoadingMessage(){
-  setTimeout(function() {
-    // document.getElementById('loadingMessage').classList.remove('is-visible');
-    console.log('Finished Loading.');
-}, 1000)};
     
     

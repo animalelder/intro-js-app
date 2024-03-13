@@ -12,15 +12,20 @@
   } */
 
 .poke-img {
-    max-width: 96px;
-    height: auto;
+    max-width: 144px;
+    display: block;
+    vertical-align: middle;
+    text-align: center;
 }
 
-h5, h4 {
+p, h5, h4 {
     text-transform: capitalize;
 }
 
+/* #this-div {
 
+    max-width: fit-content(75%);
+} */
 /* 
 
 This is all the old code, delete when done using as a reference
