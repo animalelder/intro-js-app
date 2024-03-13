@@ -25,3 +25,11 @@
 #More {
     box-shadow: 5px 5px 5px -2px #aaa;
 }
+
+#this-div {
+    max-width: 100vw;
+}
+
+#the-nav {
+    z-index: 999;
+}
