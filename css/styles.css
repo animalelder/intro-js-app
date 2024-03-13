@@ -29,3 +29,7 @@
 #this-div {
     max-width: 100vw;
 }
+
+#the-nav {
+    z-index: 999;
+}
